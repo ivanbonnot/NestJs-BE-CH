@@ -3,12 +3,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ProductsModule } from './products/products.module';
+import { ProductsController } from './products/products.controller';
+import { ProductsService } from './products/products.service';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
 @Module({
-  imports: [
+  imports: [ 
+    ProductsModule,
     ConfigModule.forRoot(),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -20,7 +24,7 @@ dotenv.config();
       inject: [ConfigService],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, ProductsController],
+  providers: [AppService, ProductsService],
 })
 export class AppModule {}
