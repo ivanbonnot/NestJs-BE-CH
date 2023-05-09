@@ -23,8 +23,17 @@ dotenv.config();
       }),
       inject: [ConfigService],
     }),
+    
   ],
   controllers: [AppController, ProductsController],
   providers: [AppService, ProductsService],
 })
+
 export class AppModule {}
+
+
+
+/*
+
+MongooseModule.forRoot(process.env.MONGODB_URI)
+    */

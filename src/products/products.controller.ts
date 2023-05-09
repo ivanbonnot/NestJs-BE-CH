@@ -1,6 +1,6 @@
 import { Controller, Body, Get, Post, Param } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { CreateProductDto } from '../dto/create-product.dto';
+import { CreateProductDto } from './DTO/create-product.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -17,7 +17,7 @@ export class ProductsController {
   }
 
   @Get(':id')
-  async findOne(@Param() { id }: { id: string }) {
-    return this.productsService.findOne(Number(id));
+  async findOne(@Param() { id }: { id: object }) {
+    return this.productsService.findOne((id));
   }
 }
