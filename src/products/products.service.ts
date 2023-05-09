@@ -7,20 +7,19 @@ import { CreateProductDto } from './DTO/create-product.dto'
 @Injectable()
 export class ProductsService {
   constructor(
-    @InjectModel(Product.name)
-    private productModule: Model<ProductDocument>,
+    @InjectModel(Product.name) private productsModule: Model<ProductDocument>,
   ) {}
 
   async create(createProductDto: CreateProductDto) {
-    const productCreated = await this.productModule.create(createProductDto)
+    const productCreated = await this.productsModule.create(createProductDto)
     return productCreated
   }
 
   async findAll() {
-    return this.productModule.find();
+    return this.productsModule.find();
   }
 
   async findOne(id: object) {
-    return this.productModule.findById(id);
+    return this.productsModule.findById(id);
   }
 }
